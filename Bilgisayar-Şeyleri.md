@@ -1,0 +1,2 @@
+# Bilgisayar-Şeyleri
+
