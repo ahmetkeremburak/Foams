@@ -8,4 +8,5 @@ You can create todos in Foam.
   - [ ] You can also select multiple lines and mark them all at once!
 
 - [ ] Method of Loci notu yazılacak.
-- [ ] Nesneye Dayalı Programlama Dili maddesi yazılacak
+- [ ] Nesneye Dayalı Programlama Dili maddesi yazılacak.
+- [ ] Yavrum sarı sarı olan etiketlerin hepsi yeniden yazılacak.

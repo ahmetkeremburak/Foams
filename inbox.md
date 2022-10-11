@@ -19,12 +19,12 @@ encapsulationı anlamak basit ama IRL farklı. Ne private ne de get set tamamen 
 - Abstraction:
   - Karmaşık işleyişi dışarıdan gizlemek.
   - Inheritance polymorphism karmaşıklığı değil.
-  - Her değişkeni private yazmaya alış.
-  - SağTık - SOurce - generate getter setter!
+  - Her değişkeni private yazmaya alış. --> bu encapsulation
+  - SağTık - SOurce - generate getter setter! --> encapsulation
   - Karmaşa varsa abstraction kaçınılmaz.
   - OOP için zorunlu değil. Hoca için encapsu, inheri ve polymor
   - bir class'tan instance alırken sağ tarafı yazsan verdiği hatadan sol tarafı bilgsayara yazdırabilirsin.
-  - Arka planda bilinmeyen bir algoritmanın çalışması esas encapsu olarak görüyor hoca. 
+  - Arka planda bilinmeyen bir algoritmanın çalışması esas encapsu olarak görüyor hoca.--> yani encapsulation için abstraction esas diyor. 
 - Mutability:
   - Mutasyona uğrayabilme.
   - Immutable olmak class değişkenlerinin değişememesidir.
