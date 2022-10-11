@@ -1,3 +1,3 @@
 # Method of Loci
-    Yazılacak.
+Yazılacak.
 

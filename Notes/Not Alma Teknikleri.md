@@ -6,11 +6,11 @@ Sayılan tekniklerin yanında hafızanın genel yapısı itibariyle bir bilgi di
 
 
 
-[[Zettelkasten]]
-[[Holistic Öğrenme]]
+ [[Zettelkasten]]
+ [[Holistic Öğrenme]]
 
-[[Outline Not Alma Metodu]]
-[[Cornel Not Alma Metodu]]
-[[Mind Map Not Alma Metodu]]
-[[Flow Not Alma Metodu]]
-[[Slayt Not Alma Metodu]]
+ [[Outline Not Alma Metodu]]
+ [[Cornel Not Alma Metodu]]
+ [[Mind Map Not Alma Metodu]]
+ [[Flow Not Alma Metodu]]
+ [[Slayt Not Alma Metodu]]
