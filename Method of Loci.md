@@ -1,0 +1,3 @@
+# Method of Loci
+    Yazılacak.
+
