@@ -9,4 +9,6 @@ Protokollerin 3 ayırt edici özelliği bulunuyor:
 [[Syntax]]
 [[Zamanlama]]
 
-
+Protokoller ikiye ayrılır:
+[[Haberleşme Protokolü]]
+[[Hizmet Protokolü]]
