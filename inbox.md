@@ -13,7 +13,7 @@
 
 
 
-# 6.Java Dersi
+# 6.Java Dersi(Notlar)
 encapsulationı anlamak basit ama IRL farklı. Ne private ne de get set tamamen yetmiyor. biraz da dışardan gizleme obfustacation mı neydi buna bi bak.
 
 - Abstraction:
@@ -50,3 +50,85 @@ encapsulationı anlamak basit ama IRL farklı. Ne private ne de get set tamamen 
 - Bir sonraki derse polymorphism ve inheritance olacak, evvelden kurcalayabilirsin.
 - 
 
+# 7.Java Dersi (12.10.2022)
+## Inheritance
+- Javanın her yerine yayılmış kavram.
+- Inheritance kalıtımdır ama biyoloji gibi değil.
+- Kategorizasyon yapılan her şey olabilir. Hayvanlar, ilaçlar, e-ticaret sitelerindeki filtreler.
+- OOPnin 3 temel ayağından biri 
+- Inh nesneler arası ilişkidir. "IS A" ilişkisi kurar.
+- Bir sınıfın başka bir sınıfın özelliklerini alması.
+- **Ödev olarak gerçek hayattan aklımıza gelen herhangi bir inheritance uygulaması yazmak**
+- Inheritance ortak özellikleri olan yerlerde kullanacağız
+- Kodlar tekrar ettiğinde, method isimleri tekrar ettiğinde, kod copy paste yaptığımızda inheritance kullanılabileceğini fark etmeliyiz.
+- Kodlar birbirine benzese de inheritance olacak diye bir kaide yok.
+- Her classın kişiliği, karakteri olur.
+- Kredi kartı ve banka kartı çok benziyor. Bu ikisi için bir parent yazılabilir.
+- İki class için parent class yazılacağı zaman ortak özellikleri dikkate alınır. Bu özellikler parent class'te toplanır.
+- Parent yazıldıktan sonra child classlara '"Child class" extends "Parent Class"' şeklinde yazılır.
+- Child classlar için artık Parent class'in extensionlarıdır diyebiliriz.
+- Banka kartı ve kredi kartı extends kart. Yani banka kartı ve kredi kartı, kart classının extensionlarıdır.
+- Peki isimleri aynı ama içerikleri farklı metodlar varsa? O zaman @Override yazıp sonra metodu yazacağız.
+- Parent child dediklerime Superclass ve Subclass diyorlar.
+- Superclass > Subclass yani superclass içinde daha çok metod var.
+### Kalıtımın Kalıtımı
+- Kredi kartının daha da özelleşebileceği durumlar olabiliyor, mesela platin kart falan.
+- Extension olan bir class'ı bir başka class extend edebilir.
+- Böyle bir durumda super kimi çağırıyor? Nereye gitmesi gerekiyorsa oraya gidiyor. Eğer bir üstünde varsa oraya gider. Yoksa onun da bir üstüne.
+- Birden fazla classtan aynı anda **extend** alınamaz. Hem oradan, hem buradan alayım olmuyor.
+- Bunu yapamamasının sebebi süper deyince nereye gidecek gibi problemler oluyor.
+- Fakat kalıtımın kalıtımının kalıtımının gibi bir yapı yapılabiliyor.
+- Bir classı extend eden classlar var mı diye bakmak için 'Open Type Hierarchy' yapıyoruz. F4 kısayolu.
+- Yazdığınız her class esasında Object classından gelir. Her classın başıdır.
+- Bu bilgi bize gösteriyor ki object classından gelen methodların hepsini Override edebiliriz. Mesela toString() metodunu override ettik.
+## Override
+- Metot ezme. Extend edilen classtan aynı isimli metodu alıyoruz ama içini **farklılaştırıyoruz**.
+- Bugün çalıştıklarımızı ezbere bilmek zorundasınız.
+## final
+- Override'a izin vermek istemiyoruz diyelim. Eğer superclassta tanımlarken 'final' dersek, metod değiştirilemez.
+- Bu tasarımlar bizim hükmümüze kalmış, şu kesin final olmalı diye bir kaide yok.
+- Peki bir değişkeni superclassta final yapsam ve onu superclassın constructor metoduyla değişken alıp ilk değerini versem?
+  - Bunu yapınca subclasslar hata veriyor. Çünkü onlar superclassın constructırına riayet etmiyor. Riayet etmek zorundalar.
+  - Final değişken superclassta olduğundan onun altında extend eden subclasslar üst tarafa o değişkeni vermek zorunda. Onu vermenin yolu da constructor metod.
+  - Final değişkene ilk değerini verebilmek için superclassta constructor yazıyoruz. Bunu yazdığımız için subclasslar bu constructor'a kendi içinden istediği değişkeni vermek zorunda.
+  - Bunu verebilmek için subclass constructır çalıştırıyor, bu constructor "super" keywordü ile superclassa istediği değişkeni veriyor. Super ilk çalışan metod olmak zorunda bu durumda.
+
+## Protected erişim belirleyici
+- Protected yaparsak dışarıdan, globalden erişim yapılamaz.
+- class, package ve subclass tarafından erişilebilir.
+
+## Soyut Class
+- Super classımı abstract yapsam
+- Abstract cclass içine concrete metod yazılabilir.
+- Abstract metod da yazılabilir fakat bu extension classta override edilmek zorunda yoksa hata verir.
+- Abstract sınıflar new yapılamazlar.
+- O yüzden sınıfı oluştururken new yapılacak mı düşünmek gerek. Ona göre karar verilecek.
+- Anonymous class, anonymous implementation
+- Bu dersten öğrenecekler extends, override, super constructor.
+- Gerçek Hayatta bir yapıyı alıp class olarak düzenleyip diğer classlara kalıtım ile extend etmek ve kurudğun sistemi açıklamak. Önemli olan açıklamak. Sistem muhteşem olmasına gerek yok.
+- 
+
+# 8. Java Dersi (15.10.2022)
+- Inh sonrası insanların kafası karışabiiyor. Aksiyonları aktarmak zor olabiliyor.
+- Soyut şeyleri aktarmak zor olabiliyor inh ile.
+- Biz hep extend kullandık ama implement de kullanacağız.
+## Polymorphism:
+- Poly. "is a" ilişkisi kuruyor.
+- List var altında arraylist, linkedlist var. Hepsi eleman tutuyor. Fakat arkada tuttuğu yapı esasında farklı çalışıyor. Burada list 'interface' oluyor.
+- insan interface'i açalım. Bu insan direk özellikleri barındırmaz ama olması gereken özellikleri tutar.
+- Extends uzatmak idi. Interfacede implement ediyoruz. Yani bir şeyi hayata geçiriyoruz.
+- Interface de abstract classlar gibi içindeki metodların tekrar yazılıp tanımlanmasını istiyor.
+- Abstract class ve interface farkına bakacağız.
+- Implement mantığı extendsten farklı. Implement ile ne olduğundan değil ne yaptığından daha çok bahsedeceğiz.
+- **Interface interface'den extend alabilir.** bunu araştırabilirsin.
+- Interface ve abstract farkı:
+  - biyolojide bildiğimiz kalıtım esasında burada polymorphism.
+  - **Birden fazla interface implement edilebilir. Esas fark bu. Bir class sadece 1 classı extend ile alabiliyor ama bir class birden fazla infa implement edebilir.**
+  -  Çoğunlukla, genelde, evvela interfaceler tanımlanır. Oradan implementasyonlar yapılır.
+  - Infa ile çalışınca artık her şey soyut. Üstte bir class yok, super diye bir şey yok.
+- "instanceof":
+  - is **this** an instance of **this** şeklinde çalışan yapı.
+  - Bize sorduğumuz class bunu implement ediyor mu ya da extend ediyor mu diyen yapı.
+- able classlar diye bir tanım var. 
+
+  
