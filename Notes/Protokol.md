@@ -12,3 +12,5 @@ Protokollerin 3 ayırt edici özelliği bulunuyor:
 Protokoller ikiye ayrılır:
 [[Haberleşme Protokolü]]
 [[Hizmet Protokolü]]
+
+[[Veri İletişimi]]

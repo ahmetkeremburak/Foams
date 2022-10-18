@@ -131,4 +131,63 @@ encapsulationı anlamak basit ama IRL farklı. Ne private ne de get set tamamen 
   - Bize sorduğumuz class bunu implement ediyor mu ya da extend ediyor mu diyen yapı.
 - able classlar diye bir tanım var. 
 
-  
+
+
+# 9. Java Dersi (17.10.2022)
+zafer onan github polymorphism
+- extend implement ileride de dönecek Bunları iyi anlamak gerek.
+## String ve Equals
+- Javada stringler fazla önemli classlar.
+- Sarıcı class diyebiliyor.
+- Esasında bir byte array.
+- Javada özel muamele görür stringler. String pool diye bir yere gider. Aynı stringler aynı yeri göstermeye çalışır(Nasıl???)
+- İki değişkene aynı değeri yazarsak d1 == d2 dersek true yazar. İkisine de bir harf eklesek. tekrar eşit eşittir desek false çıkar.
+- Çünkü eşit eşittir değerlerini değil hafızadaki yerlerini karşılaştırıyor. Neden?
+- Stringler immutable olduklarından buna yeni harf ekleyince hafızada yerleri farklı yeri gösteriyor.
+- Bu sebeple string classında "==" override edilmiştir.
+- new String dediğimizde hep hafıza yeri farklı stringler gelir.
+- Baştan substring alınırsa aynı string geri döndürülüyor. Baştan itibaren alınmazsa new String oluşturuluyor.
+- Javada string için eşit eşittire girme.
+- Stringleri arka arkaya birleştirme yolu string buffer ya da string builder. Stringbuffer thread safe halidir string bufferın
+-     public static void asd()
+    {
+        StringBuilder temp = new StringBuilder();
+        String temp2 = "";
+        long milis1 = System.currentTimeMillis();
+        for (int i = 0; i < 150000; i++)
+        {
+            temp.append("a");
+//            temp2 += "a";
+        }
+        long milis2 = System.currentTimeMillis();
+        System.err.println(temp.toString().length() + " (" + (milis2 - milis1) + ")");
+    }
+## Equals
+- String için dedik ama sadece stringlerde değil.
+- bir person classı üzerinden denedik.
+- equals metodu tam da istediğimiz gibi çalışmıyor.
+- O zaman override edeceğiz.
+- Sağ tık ve source ile generate edebiliyoruz.
+- kullanmak istetiğimiz classta bir equals metodu çağırıp eziyoruz. 
+- Bu çok mu önemli ki override edip baştan yazacağız?
+- önemli çünkü equals görmediğimiz yerlerde de arka planda kullanılıyor.
+- mesela arraylistlerin remove metodunda equals ile karşılaştırıyor. Sileceği indexi öyle buluyor.
+
+
+### Ders biraz erken bitti
+- **Çarşambaya hashcode göreceğiz**
+- hashcode hashmap ile alakalıdır.
+- Çarşamba günü bunlara bakacağız, araştır da gel.
+- Bonus Content: Dosya okuma yazma:
+  - Javada çok kolaydır.
+  - Stringbuilder genelde dosya okumayla kullanılıyor.
+  - "ctrl + shift + /" basarak collapse all yapabiliriyoruz.
+  - filereader ve bufferedReader var.
+  - Buffered satır satır ya da belirli bir karakter sayısı ile okuyor.
+  - nonblocking io??
+  - file olarak dosyayı alıp, file'ı stream olarak okuyabiliyoruz.
+  - InputStreamReader sadeecfile değil her türlü inputu okuyabiliyor çünkü byte olarak okuyor. zaten her şey byte.
+  - bufferedWriter çalışması için fileWriter olarak çağırmak gerekiyor. **Kesinlikle close yapmak gerekiyor bufferedwriterı**.
+  - StreamReader'a da bir bak.
+  - postgreSQL azıcık bakabilirsin şşş sır bu sır.
+  -    

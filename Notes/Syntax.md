@@ -5,6 +5,7 @@
 Alanlar:
 | Preamble | Destination Address | Sender Address | Type | Veri Alanı | FCS |
 | -------- | ------------------- | -------------- | ---- | ---------- | --- |
+
 [[Preamble]]
 [[Destination Addres]]
 [[Sender Addres]]
@@ -12,4 +13,6 @@ Alanlar:
 [[Veri Alanı]]
 [[FCS]]
 [[Semantics]]
+[[Zamanlama]]
+[[Protokol]]
 
