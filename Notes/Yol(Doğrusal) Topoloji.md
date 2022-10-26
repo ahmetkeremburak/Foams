@@ -1,0 +1,2 @@
+# Yol(Doğrusal) Topoloji
+
