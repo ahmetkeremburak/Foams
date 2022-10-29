@@ -395,4 +395,58 @@ Ulan ilk seferinde öyle yazacaktım.
 # 13.Java Dersi (26.10.2022)
 
 ## Annotations
-
+- Sunumdaki tanımı önemsiyorum, özellikle bunu soruyorum.
+- Java'nın derleme veya çalışma zamanında ihtiyaç duyabileceği bilgileri sağlar.
+  - Yani annotation kendisi bir şey yapmaz.
+  - Yazdığın yerde javanın kullanması için belirtiyor.
+- Annotation yazmayacağız kendimiz, fakat sıklıkla kullanacağız.
+- Mesela @Override:
+  - Yazdığımız metodu override ettiğimizi söylemek için başında yazıyoruz.
+  - Kodun compile aşaması için esas konuş methodunu çalıştırma burada yazanı çalıştır demek için kullanılıyor.
+  - Biz yazmasak da java override olduğunu anlayabiliyor fakat bizim de anlamamız için gerekli.
+- @Deprecated:
+  - Metodun üstünü çizdi.
+  - Bu metod artık tedavülden kalktı, silinecek gibi bir şey söylüyor.
+  - Neden direk silmiyoruz metodu?
+    - Silsek kodlar patlayabilir. O kütüphaneyi kullanan kodlar çalışamaz hale gelebilir.
+  - Yanına parantez açabiliyoruz @Deprecated() gibi.
+    - burada ne zamandan beri deprecated, hangi versiyondan beri deprecated olduğunu since = "Versiyon" olarak yazabiliyoruz.
+- @SuppressWarnings():
+  - Burada da bazı hataları bastırabiliyoruz.
+  - Parantez içine nasıl uyarıları bastıracağımızı yazıyoruz.
+- Annotationlar için çok kullanılacak bir kütüphane var. İsmi "Lombok". [Bu da linki](https://projectlombok.org/download)
+- Eclipsete help altından install software kısmından [Şu link ile](https://projectlombok.org/p2) Lomboku kurabilirsin. Bir daha ihtiyacın olmaz tekrar tekrar kurmaya.
+- @Getter, @Setter,@AllArgsConstructor, @NoArgsConstructor:
+  - Bunları classların başına yazdığımızda getter, setter varmış gibi farz et diyor.
+  - Diğer ikisinde bunlarla gelecek constructor ve boş constructorı classın içine otomatik oluşturuyor.
+- Annotationın kendisi ve uygulayıcısı classı...???
+- An. oluştururken class gibi oluşturup tanımına @interface yazıyoruz.
+- Fakat sadece an. oluşturup sonra kullanmak işe yaramıyor. Hangi değişken ve metodun başına yazıldığını tanımından bulamayız.
+- Tanımlarken nereye yazılmalı diye belirleyebiliriz. @Target() ile.
+  - Bu an. nereye yazılmalıdır diye bir value istiyor. Bu valelar ElementType ile yazılıyor. Element type javadaki yazdığımız her şeyi kategorize eden bir enum. Enum kategorize etmiyor, olanları sınıflandırmış oluyor.
+  - Yani target bize bir an. tanımlanırken nereye yeazılabileceğini belirlemeye yarıyor.
+  - @Target(value = ElementType.METHOD) mesela böyle. Bu yazılırsa yazıldığı an. sadece methodların başında kullanılabilir.
+- An.ları okumak zorundayız. Hepsini henüz ezberleyemesek de yazmak gerek.
+- @Retention:
+  - CLASS, RUNTIME, SOURCE değerleri var.
+  - Saklamak gibi bir anlamı var.
+  - Bu retention diğer an.ların başına yazılıyor.
+  - Diğer an.ların ne zamana kadar geçerli olacağını belirtiyor.
+- Annotationlardan sonra reflection göreceğiz.
+- Override hariç yazdığımız an.lar şu an pek bir işe yaramıyor.
+- Classın bilgilerine erişmeye çalışıyorum diyelim.
+  - Classın adı.class yazsam class hakkında bana bilgi verir.
+  - Mesela; Erkek.class.method deyince methodlar gelir.
+  - An.lar için de bunu yapabilirim.
+  - böyle yazınca bana an. listesi döndürüyor. Liste olarak döndürüyor.
+  - Javada bütün annotationların bağlı olduğu bir interface var.
+  - Javada class diye bir class da var.
+  - Biz javayı java ile anlıyoruz.(Bu ne demektir tam anlamadım.)
+    - Bu anlamaya reflection deniyor.
+    - Kodların üzerinden tekrar tekrar geçmenizi ve özümsemenizi isterim. Springe geçmeden yapmak gerek.
+    - Javada kod ile classın hakkında bilgi almak ve bu bilgiyi kullanmak reflection oluyor.??
+    - Javadan javayı görmek. Spring falan bunları çok kullanıyor.
+    - Bu dersin kodlarını oturup incelemek lazım ve konuyu netten bir daha izlemek gerek.
+    - Javada bir classın içindeki string türündeki bütün fieldları almak istiyorum, ya da bir classın içinde vehicle döndüren bütün metodları bulmak ve parametrelerini listelemek istiyorum ya da bir classtaki public bütün metodların parametreleri ve bu parametreler içerisinde @Ciddiyet an. level 3'ten fazla olanları listele.
+    - Annotationı annotation yapan @interface'tir.
+    - 
