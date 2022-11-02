@@ -187,6 +187,7 @@ zafer onan github polymorphism
   - Buffered satır satır ya da belirli bir karakter sayısı ile okuyor.
   - nonblocking io??
   - file olarak dosyayı alıp, file'ı stream olarak okuyabiliyoruz.
+  - java 7 ile gelen file.rader.pathof gibi okuma da yapılıyor.
   - InputStreamReader sadeecfile değil her türlü inputu okuyabiliyor çünkü byte olarak okuyor. zaten her şey byte.
   - bufferedWriter çalışması için fileWriter olarak çağırmak gerekiyor. **Kesinlikle close yapmak gerekiyor bufferedwriterı**.
   - StreamReader'a da bir bak.
@@ -310,7 +311,7 @@ Ders evveli notlar.
 - buradan bir best practice, try bloğunun içini kısa tut.
 - Try içine If bloğu yazıp hataları randomize etti ._.
 - Şu nu demek için hangi hatanın geleceğini her zaman bilemeyebilirsin.
-- buna bir çözüm olarak birden fazla catch bloğu yazılıp değişken olarak farklı ex. çeşitleri yazılır. Fakat düz ex. değişkeni alan bir catch bloğu da tutuyoruz ki ön göremediklerimizi de yakalayalım. Düz ex. bloğu ile yakalamaya "tepeden ex. yakalamak" diyor.
+- buna bir çözüm olarak birden fazla catch bloğu yazılıp değişken olarak farklı ex. çeşitleri yazılır. Fakat düz ex. değişkeni alan bir catch bloğu da tutuyoruz ki ön göremediklerimizi de yakalayalım. Düz ex. bloğu ile yakalamaya "tepeden ex. yakalamak" diyor. Bunu yaparsak instanceOf metodu ile hangisi olduğunu mecburen arayıp bulmamız gereği doğuyor.
 - düz ex. bloğunu üste değil alta yazmamız gerek, çünkü o bütün ex.leri yakalıyor. O yakalarsa aşağıya gidemez catch blokları.
 - Multicatch diye bir ifade de var. "or" mantık işlemi ile yapılıyor.
 - catch (ArrayIndexOutOfBoundsException | FileNotFoundException e)
@@ -386,7 +387,7 @@ Ulan ilk seferinde öyle yazacaktım.
 - Java type safe olduğu için custom classlarda bunu değişken almak için kullanmak anlamsız olabiliyor.
 - Concurrentlarda olabilir. Concurrent nedir ama ben bilmiyorum
 - Kendi tiplerini tanımlayan bir classın extensionları da yukarıdaki tiplere saygı duymak zorunda ve onların verdiği tip şeklini almak zorunda.
-- class MatcherExtension<P extends Person, V extends Vehicle> extends Matcher<P,V>
+- class MatcherExtension<P extends Person, V extends Vehicle> extends Matcher<P,V>. BUnu yazarken generic tip tanımlamak zorunda değiliz.
 - **Alt class üst classtan daha geniş yazılabilir.**
 - Eğer generic type sevdiyeniz androidde "asynctask"a bakabilirsiniz.
 - why does futuretasks have generic type in java?
@@ -450,3 +451,68 @@ Ulan ilk seferinde öyle yazacaktım.
     - Javada bir classın içindeki string türündeki bütün fieldları almak istiyorum, ya da bir classın içinde vehicle döndüren bütün metodları bulmak ve parametrelerini listelemek istiyorum ya da bir classtaki public bütün metodların parametreleri ve bu parametreler içerisinde @Ciddiyet an. level 3'ten fazla olanları listele.
     - Annotationı annotation yapan @interface'tir.
     - 
+
+# Reflection Furkan Sönmez Notları
+
+# 14.Java Dersi (31.10.2022)
+Ann.lar kendi kendine bir şey yapmıyor. Ya da javaya şu ann. burada varsa şunları falan yap demek için de değil.
+- Madem ann. yazıldı. Bunları çalıştıran, bunları kullanan bir şeyler de olmalı. O da **Reflection**
+## Reflection
+- Javada yazdığımız her şey esasında bir yapı. Yani hepsiyle bir şeyler tanımlayabiliriz.
+- Basit bir person classsından instance alıp, person.setIsim ile isim vermek ve syso(person.getIsim()) ile ismi yazdırmak. Gayet basit. Şimdi bu ders bunu java ile yazacağız. Yani reflection ile.
+- obj kullandığımız classın constructorının yeni bir instance'ı değil mi?
+- Constructorı tanımlarken neden wildcard yapıyoruz da generic type yapmıyoruz? çünkü generic type yaparsak bir şekilde bir yerden o type'ın verilmesi gerekiyor. Bu da reflectionın mantığına aykırı. Reflectionın özelliği esnek ve kör bir yapı olması.
+- Reflection ile private method ve fieldlar dışarıdan görülebiliyor, ama çalıştırmaya çalışırsan IllegalAccessException alırsın.
+- Fakat methodu alıp method.setAccessible(true) dersek ondan sonra çalışabilir.
+- Demek ki private olsa da çalışıyormuş.
+- Private yapmanın amacı kimse erişmesin diye değil. OOP olması için, her tarafa açık olup karışmaması için yapılıyor.
+- Bu private methodlarda, fieldlarda olur.
+- Bu şekilde final değişkenler ve methodlar da değiştirilebilir.
+- Javada yazdığınız kodu reflectiondan koruma şansınız yok.
+- Gerçekten ne yazıldığı anlaşılmasın diye yapılan practiceler için Obfuscation deniyor. Wikipedide görmüştüm bir dönüp okuyalım bakalım.
+- "Hatta obfuscation yapan kodu biz kendimiz bile yazabiliriz."
+- "Inversion"
+- Reflection'ın durup dururken bir mantığı yok. Annotationlarla veya inversion of control ile anlamlı
+- class'ın kendisini class içinden çalıştırıyorum.
+- Reflection imkanı olmasa javanın javayı okuması anca RAMi okuyarak olur, o da bir nevi JVm işi.
+- Reflectionlarda sanki JVM'i javanın içinden şunu yap bunu yap gibi kontrol ediyoruz.
+- R.ler ister istemez ann.lardan türüyor. ??? Bu şu demek reflectionlar normalde java tarafından okunmayan annotationları java üzerinden okuyup kullanabilmek için yazılıyor.
+- Bir sonraki ders Casting, Boxing işlemleri. Ondan sonra Design Patternlar. Singleton, builder, chain of responsibility, strategy, cobent, proxy, belki template method.
+- Kesin bir playground java project açmam gerek.
+
+
+# 15.Java Dersi (2.11.2022)
+Casting boxingde siz kendiniz okuyup öğrenebilirsiniz. Hoca takılabileceğimiz ve dikkat edilesi yerleri gösterecek.
+
+## Boxing
+Primitive türlerin sınıf olan karşılıklarına IDE ve JRE tarafından otomatik çevrilebilmesi.
+- Bir class içine atmak, bir wrapper class içine koymaktır.
+- Çok fazla yapılırsa GC işlemine sebep olur.
+- Mesela Integer classı ve onun metodları var.
+- Herhangi bir method int değişkeni alabilir. boxed ya da unboxed bir şekilde de alabilir. Integer.valueOf(sayi) gibi.
+- ama bu şekilde metoda null gelirse hata verir çünkü int bir primitive tip.
+- Integer ile bir wrapper class ile verirsek null gelebilir. Çünkü artık bir reference type olmuştur.
+- Reference type olunca null değer verilebilir ve bu durumda bir null pointer hatası gelir. Bunun için önlem alamk gerekebilir.
+- Peki methoda önce boxed bir değişkeni verirsek? otomatik unboxing olacak mı?
+- Bötle bir durumda java unboxing yapmaya çalışıyor ama değerin içinde esasen null. Öyle olduğundan null bulunca yine null pointer exception veriyor.
+- Integer 10'dan büyük mü diye bakılamaz. Integer içindeki değeri int değerine çevirip 10'dan büyük mü diye bakıyor. Eğer çeviremezse hatayı direk veriyor.
+## Casting
+Boxingden daha önemli. Yanlış yapılacak çok şey var.
+- Bir sınıfın kendinden türetilmiş(inheritance) ya da gerçeklenmiş(polymorphism) sınıflara çevrilebilmesidir.
+- Inh. ile üstteki classın özelliklerini üzerimize almak zorundayız.
+- Poly. ile de bunu sağlıyor.
+- Bunlar javanın sağladığı hizmetler.
+- Casting de javanın sağladığı bir hizmet. Birbiriyle alakası olan classların tiplerini dönüştürebiliyoruz.
+- Casting ile biz bir dönüşüm geçirteceğiz. Dönüşünce bazı özellikler ortadan kaybolabilir.
+- is-a ilişkisi olduğu zaman instance alırken sıkıntı olmadan alabiliyor.
+- ama ilişkiyi tersine çeviremezsin. Çünkü öyle olunca subclassların içinde superclass özellikleri var ama tam tersi durum doğru değil.
+- Superclasstan alıp subclassa cast edilmesi downcasting oluyor. Fakat bu durumda subclassın özellikleri gelmiyor. o yüzden exception verir.
+- Yani downcasting classCastException alır.
+- Üst class değişkenini subclass değişkenine cast edebiliyorum. Fakat bunun için bir şekilde, bir yerlerde üst class sub class olarak tanımlanmış olmalı.
+- Tam tersi şekilde de yapamazsın çünkü zaten subclass, superclasstan büyük oluyor. Bunu cast etmek gereksiz olabilir ya da kontrol etmek gerekebilir.
+- aynı class silsilesinden gelmeyen classlar birbirine cast edilemezler.
+- Peki cast yapmamak için ne yapabiliriz?
+- Generic type kullanabiliriz. O zaman ne olursa o tip üzerinden çalışır ve bize döner.
+- Cast işleminde ClassCastException almamak adına instanceof ile kontrol etmemiz gerekir. Çok instanceof kullanıımı performance düşürürü ve bad practice idir.
+- Kalıtım alan sınıflar hiçbir şekilde birbirlerinin yerine geçemezler. Bir sınıftan extend ya da implement aldım. Artık superclass yerine yeni subclassı kullanırım diyemeyiz.
+- bundan sonra design patternler, pazartesi maven, eğer istersek çarşamba soru-cevap eğer yoksa spring framework başlayacak.

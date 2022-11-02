@@ -1,5 +1,5 @@
 # Reflections
 
-Java'yı Java ile anlamak.
+Java'yı Java ile anlamak. 
 
 [[Annotations]]

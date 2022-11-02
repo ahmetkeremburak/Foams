@@ -1,6 +1,6 @@
 # Generics
 
-Javada class veya method tanımlarında kullanılan temsili tiplerdir. Bir classın yazımında ileride bir tipten fazla metod alabileceği düşünülüyorsa, kullanılacak değişken ya da geri döndürülecek değerin tipi "< T >" şeklinde yazılır ve soyut, temsili bir tip biçiminde class tanımlanırken kullanılabilir. 
+Javada class veya method tanımlarında kullanılan temsili tiplerdir. Bir classın yazımında ileride bir tipten fazla metod alabileceği düşünülüyorsa, kullanılacak değişken ya da geri döndürülecek değerin tipi "< T >" şeklinde yazılır ve soyut, temsili bir tip biçiminde class tanımlanırken kullanılabilir. Scope içinde kullanılır diyoruz. Scope nedir bir bak.
 
 Generics yazıldığında buraya object altında herhangi bir sınıf gelebilir demektir. Fakat bu sınıf class veya method çağırılırken spesifik olarak verilmelidir.
 
