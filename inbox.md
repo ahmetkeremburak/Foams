@@ -15,11 +15,12 @@
 # AnkiFactory
 
 # Tekrar Notları
-
-
 ## Spring Boot Hakkında
 - application.properties dosyasında db'ye bağlanmak için gereken bilgileri vermeliyiz. Bu boot kullanmadan evvel web.xml dosyasının içinde verilebiliyordu veya bir @Configuration classı içinde veriliyordu. Bootta application.propertiesde.
 ### JPA ve Hibernate hakkında
 - application properties içerisine hangi veri tabanını kullandığımıza dair hibernate'e bir bilgi vermemiz gerekiyor.Bu bilgiyi verirken **spring.jpa.properties.hibernate.dialect =org.hibernate.dialect.PostgreSQL10Dialect** şeklinde propertiese ekliyoruz.
 - **spring.jpa.hibernate.ddl-auto** ayarına create, create-drop, none, update, validate diyerek uygulama her ayağa kaldırıldığında DB'ye nolduğunu ayarlıyoruz.
-- Hibernate object relational mapping ile biz modellerin içine başka model sınıflarından bir nesne verdiğimizde aradaki bağı, yani "join"lemeyi kendisi yapıyor. 
+- Hibernate object relational mapping ile biz modellerin içine başka model sınıflarından bir nesne verdiğimizde aradaki bağı, yani "join"lemeyi kendisi yapıyor.
+- Tablolar arası ilişkiler kurarken çıkan persist, merge, detach gibi kavramları anlamak için "jpa context lifecyle" bakmak gerekir. Bu kavramlar db'deki kavramlardan farklı. on delete, on update ile alakalı değil.
+- FK için sütun isimlendirirken @Column yerine @JoinColumn kullanılır. 
+- FK için ilişki annotation yazarken fetch type lazy kullanmak daha iyi diyorlar. 
